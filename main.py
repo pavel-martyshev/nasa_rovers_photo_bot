@@ -69,10 +69,16 @@ def make_request(message: types.Message) -> None:
     response = photo_urls('GET', url, api_key, params)
 
     if len(response) > 0:
-        bot.send_media_group(message.chat.id, response[:10])
-        bot.send_message(message.chat.id, 'Фото {0}, сол {1}'.format(
-                         params[0], params[2]),
-                         reply_markup=markup)
+        try:
+            bot.send_media_group(message.chat.id, response[:10])
+            bot.send_message(message.chat.id, 'Фото {0}, сол {1}'.format(
+                             params[0], params[2]),
+                             reply_markup=markup)
+        except ApiTelegramException:
+            bot.send_message(message.chat.id, 'Возникла ошибка на стороне '
+                                              'сайта NASA. Попробуйте другую '
+                                              'камеру',
+                             reply_markup=markup)
     else:
         bot.send_message(message.chat.id, bot_func.no_messages_to_send,
                          reply_markup=markup)
