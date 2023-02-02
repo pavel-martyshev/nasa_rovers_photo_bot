@@ -1,0 +1,7 @@
+venv/
+.idea/
+/.mypy_cache/
+nasa_bot_data.db
+database/common/.mypy_cache/
+__pycache__/
+tkn.py
