@@ -73,12 +73,11 @@ def _get_curiosity_last_sol(method: str, url: str, api_key: str,
 
 def _get_apod(method: str, url: str, api_key: str,
               resp_func=_make_response) -> str:
-    """Возвращает URL фото дня. Принимает метод запроса, URL,
+    """Возвращает API, с данными картинки дня. Принимает метод запроса, URL,
     ключ API, функцию для запроса к API."""
 
     response = resp_func(method, url + api_key)
     response = json.loads(response.text)
-    response = response['url']
 
     return response
 

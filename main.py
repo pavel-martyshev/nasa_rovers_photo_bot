@@ -14,7 +14,7 @@ from tkn import bot_token, api_key
 bot = tb.TeleBot(bot_token)
 params: List[str] = []
 
-subprocess.Popen([sys.executable, 'send_photo.py'])
+subprocess.Popen([sys.executable, 'send_picture.py'])
 # Запуск параллельного скрипта для рассылки фото дня и обновления БД
 
 
