@@ -82,7 +82,7 @@ def _send_photo_of_the_day() -> None:
     for chat in chats:
         if chat.chat_id not in complete_chats:
             try:
-                bot.send_photo(chat.chat_id, response, caption='Фото дня!')
+                bot.send_photo(chat.chat_id, response, caption='Картинка дня!')
                 complete_chats.add(chat.chat_id)
             except ApiTelegramException:
                 db_delete(db, Users2Chats, Users2Chats.chat_id == chat.chat_id)
