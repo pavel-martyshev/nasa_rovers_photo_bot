@@ -58,6 +58,7 @@ def _get_curiosity_last_sol(method: str, url: str, api_key: str,
 
     result = ''
     date_now = datetime.now() - timedelta(2)
+    date_now = date_now.strftime('%Y-%m-%d')
     url = url.replace('sol', 'earth_date')
     url = url.replace('&camera={CAM}', '')
     url = url.format(NUM=date_now, ROVER='curiosity') + api_key
@@ -78,6 +79,7 @@ def _get_apod(method: str, url: str, api_key: str,
 
     response = resp_func(method, url + api_key)
     response = json.loads(response.text)
+    response = response['hdurl']
 
     return response
 
