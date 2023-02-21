@@ -86,6 +86,7 @@ def _send_picture_of_the_day() -> None:
                                                                 'дня!')
                 complete_chats.add(chat.chat_id)
             except ApiTelegramException:
+                print('Чат {} удален'.format(chat.chat_id))
                 db_delete(db, Users2Chats, Users2Chats.chat_id == chat.chat_id)
 
 
